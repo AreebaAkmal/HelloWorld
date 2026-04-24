@@ -1,17 +1,25 @@
 pipeline {
     agent any
+    
+    // Yahan hum Environment Variables define karte hain
+    environment {
+        STUDENT_NAME = "Areeba Akmal"
+        LAB_NUMBER = "12"
+    }
+    
     parameters {
-        // Yeh checkbox banaye ga Jenkins mein
         booleanParam(name: 'executeTests', defaultValue: true, description: 'Check to run tests')
     }
+    
     stages {
         stage('Build') {
             steps {
+                // Environment variable ko use karne ke liye ${env.NAME} likhte hain
+                echo "Starting Lab ${env.LAB_NUMBER} for ${env.STUDENT_NAME}"
                 echo 'Building Project...'
             }
         }
         stage('Test') {
-            // Agar checkbox uncheck hoga toh ye stage skip ho jayegi
             when {
                 expression { params.executeTests == true }
             }
