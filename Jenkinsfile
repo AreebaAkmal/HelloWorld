@@ -1,7 +1,6 @@
 pipeline {
     agent any
     
-    // Yahan hum Environment Variables define karte hain
     environment {
         STUDENT_NAME = "Areeba Akmal"
         LAB_NUMBER = "12"
@@ -14,7 +13,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Environment variable ko use karne ke liye ${env.NAME} likhte hain
+           
                 echo "Starting Lab ${env.LAB_NUMBER} for ${env.STUDENT_NAME}"
                 echo 'Building Project...'
             }
